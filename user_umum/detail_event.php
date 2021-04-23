@@ -73,6 +73,21 @@ $row=mysqli_fetch_assoc($eksekusi_id);
 
                         </tr>
                         <tr>
+                            <th>No Telpon</th>
+                            <td><?php echo $row['no_telp'] ?></td>
+
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo $row['email'] ?></td>
+
+                        </tr>
+                        <tr>
+                            <th>Proposal</th>
+                            <td><a href="../event_creator/proposal/<?php echo $row['proposal'] ?>"/>--> Baca Proposal</a></td>
+
+                        </tr>
+                        <tr>
                             <th>Status Dana Event </th>
                             <td><?php echo $row['status_terdanai'] ?></td>
 
@@ -96,8 +111,6 @@ $row=mysqli_fetch_assoc($eksekusi_id);
 
       </div>
       </div>
-      <div class="well">
-      </div>
      </div>
 
      <div class="col-sm-2">
@@ -107,14 +120,7 @@ $row=mysqli_fetch_assoc($eksekusi_id);
   </div>
 
   <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
-    <div class="well">
-     <p>No Telpon</p><br/>
-     <p><?php echo $row['no_telp'] ?></p>
-    </div>
-    <div class="well">
-     <p>Email</p><br/>
-     <p><?php echo $row['email'] ?></p>
-    </div>
+    
   </div>
 
 <?php

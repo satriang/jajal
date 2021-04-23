@@ -2,15 +2,7 @@
 include_once('layout_atas.php');
 include_once('koneksi.php');
 
-$batas   = 5;
-$halaman = @$_GET['halaman'];
-	if(empty($halaman)){
-		$posisi  = 0;
-		$halaman = 1;
-	}
-	else{ 
-	  $posisi  = ($halaman-1) * $batas; 
-	}
+
 
 $id_event = $_GET['id_event'] ;
 
@@ -36,7 +28,7 @@ $sql_event_didanai = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event
 JOIN event ON pengajuan_event.id_event = event.id_event 
 JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
 JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-WHERE event.id_event = '{$id_event}' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
+WHERE event.id_event = '{$id_event}' AND pengajuan_event.status = 'DI TERIMA'";
 $eksekusi_event_didanai = mysqli_query($conn, $sql_event_didanai);
 
 //sql_foto
@@ -204,33 +196,8 @@ $jumlah_data = $row_jumlah_foto['jumlah_foto_event'];
                   ?>
               </tbody>
             </table>
-          
-              <?php
-              // Langkah 3: Hitung total data dan halaman serta link 1,2,3 
-              $sql2_event_diterima = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, 
-                                              event.nama_event, event.id_event_creator, event_creator.nama_eo, 
-                                              pengajuan_event.dana_event, pengajuan_event.status
-                                              FROM `pengajuan_event`
-                                              JOIN event ON pengajuan_event.id_event = event.id_event
-                                              JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
-                                              JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-                                              WHERE event.id_event = '{$id_event}' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
-              $eksekusi2_event_diterima = mysqli_query($conn, $sql2_event_diterima);
-              $jmldata_event_diterima   = mysqli_num_rows($eksekusi2_event_diterima);
-              $jmlhalaman_event_diterima = ceil($jmldata_event_diterima/$batas);
-              ?>
-                  <br/> Halaman :
-                     <?php
-                        for($i=1;$i<=$jmlhalaman_event_diterima;$i++)
-                          if ($i != $halaman){
-                            echo " <a href=\"read_event.php?halaman=$i\">$i</a> | ";
-                            }else{
-                            echo " <b>$i</b> | ";
-                          }
-                        echo "<p>Total event : <b>$jmldata_event_diterima</b> Sponsor</p>";
-                      ?>
           </div>
-           </div>
+        </div>
       </div>
      
      </div>
@@ -251,16 +218,16 @@ $jumlah_data = $row_jumlah_foto['jumlah_foto_event'];
      <p><?php echo $row['email'] ?></p>
     </div>
     <div class="well">
-     <p>Proposal</p><br/>
-     <p><a href="proposal/<?php echo $row['proposal'] ?>" class="btn btn-info"/>Baca Proposal</a></td></p>
+       <p>Proposal</p><br/>
+       <p><a href="proposal/<?php echo $row['proposal'] ?>" class="btn btn-info"/>Baca Proposal</a></p>
     </div>
     <div class="well">
      <p>Edit Event</p><br/>
-     <p><a href="form_edit_event.php?id_event=<?php echo $row['id_event'] ?>"" class="btn btn-success"/>Edit</a></td></p>
+     <p><a href="form_edit_event.php?id_event=<?php echo $row['id_event'] ?>" class="btn btn-success"/>Edit</a></p>
     </div>
     <div class="well">
      <p>Konfirmasi Event Terselenggara</p><br/>
-     <p><a href="form_konfirmasi_event_terselenggara.php?id_event=<?php echo $row['id_event'] ?>"" class="btn btn-primary"/>Konfirmasi</a></td></p>
+     <p><a href="form_konfirmasi_event_terselenggara.php?id_event=<?php echo $row['id_event'] ?>"class="btn btn-primary"/>Konfirmasi</a></p>
     </div>
   </div>
 

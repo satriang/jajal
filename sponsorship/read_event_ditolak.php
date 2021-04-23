@@ -66,7 +66,7 @@ $eksekusi_event_ditolak = mysqli_query($conn, $sql_event_ditolak);
                                               JOIN event ON pengajuan_event.id_event = event.id_event
                                               JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
                                               JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-                                              WHERE sponsorship.id_sponsorship = '{$id_sponsorship}' AND pengajuan_event.status = 'DI TOLAK' LIMIT $posisi,$batas";
+                                              WHERE sponsorship.id_sponsorship = '{$id_sponsorship}' AND pengajuan_event.status = 'DI TOLAK'";
               $eksekusi2_event_ditolak = mysqli_query($conn, $sql2_event_ditolak);
               $jmldata_event_ditolak   = mysqli_num_rows($eksekusi2_event_ditolak);
               $jmlhalaman_event_ditolak = ceil($jmldata_event_ditolak/$batas);

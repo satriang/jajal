@@ -14,11 +14,10 @@ $halaman = @$_GET['halaman'];
 
 //var_dump(array_values($eksekusi));
 // sql read pengajuan event
-$sql_pengajuan_event = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, pengajuan_event.id_sponsorship, sponsorship.nama_sponsorship, pengajuan_event.status
-FROM `pengajuan_event` 
+$sql_pengajuan_event = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, event_creator.nama_eo, pengajuan_event.dana_event, pengajuan_event.status, sponsorship.nama_sponsorship FROM `pengajuan_event` 
 JOIN event ON pengajuan_event.id_event = event.id_event 
 JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship 
-WHERE event.id_event_creator = '{$id_event_creator}' AND pengajuan_event.status = 'DI AJUKAN'
+JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator WHERE event.id_event_creator = '$id_event_creator' AND pengajuan_event.status = 'DI AJUKAN'
 LIMIT $posisi,$batas";
 $eksekusi_pengajuan_event = mysqli_query($conn, $sql_pengajuan_event);
 
@@ -61,11 +60,10 @@ $eksekusi_pengajuan_event = mysqli_query($conn, $sql_pengajuan_event);
           
               <?php
               // Langkah 3: Hitung total data dan halaman serta link 1,2,3 
-              $sql2_pengajuan_event = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, pengajuan_event.id_sponsorship, sponsorship.nama_sponsorship, pengajuan_event.status
-              FROM `pengajuan_event` 
-              JOIN event ON pengajuan_event.id_event = event.id_event 
-              JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship 
-              WHERE event.id_event_creator = '{$id_event_creator}' AND pengajuan_event.status = 'DI AJUKAN'";
+              $sql2_pengajuan_event = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, event_creator.nama_eo, pengajuan_event.dana_event, pengajuan_event.status, sponsorship.nama_sponsorship FROM `pengajuan_event` 
+                JOIN event ON pengajuan_event.id_event = event.id_event 
+                JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship 
+                JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator WHERE event.id_event_creator = '$id_event_creator' AND pengajuan_event.status = 'DI AJUKAN'";
               $eksekusi2_pengajuan_event = mysqli_query($conn, $sql2_pengajuan_event);
               $jmldata_pengajuan_event    = mysqli_num_rows($eksekusi2_pengajuan_event);
               $jmlhalaman_pengajuan_event = ceil($jmldata_pengajuan_event/$batas);
@@ -74,7 +72,7 @@ $eksekusi_pengajuan_event = mysqli_query($conn, $sql_pengajuan_event);
                      <?php
                         for($i=1;$i<=$jmlhalaman_pengajuan_event;$i++)
                           if ($i != $halaman){
-                            echo " <a href=\"read_event.php?halaman=$i\">$i</a> | ";
+                            echo " <a href=\"read_event_diajukan.php?halaman=$i\">$i</a> | ";
                             }else{
                             echo " <b>$i</b> | ";
                           }

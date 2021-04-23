@@ -174,6 +174,15 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+            <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Event
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="read_event.php">Event Aktif</a></li>
+            <li><a href="read_event_terlaksana.php">Event Terselengara</a></li>
+          </ul>
+        </li>
+        <li><a href="read_sponsorship.php">Sponsorship</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <li><a href="../signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

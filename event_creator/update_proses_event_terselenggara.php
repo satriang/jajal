@@ -28,15 +28,21 @@
 				move_uploaded_file($tmp_name, "img/".$nama_foto_baru);
 				mysqli_query($conn,"INSERT INTO foto_event VALUES('','$id_event','$nama_foto_baru')");				
 			}
-			echo "Berhasil Upload";
+			//echo "Berhasil Upload";
+			echo ' <script type="text/javascript">
+				alert("Event dan Proposal Berhasil Terupload");
+				window.location.replace("read_event.php") </script>'; 
 		}else{
-			echo "Gambar tidak ada";
+			//echo "Gambar tidak ada";
+			echo ' <script type="text/javascript">
+				alert("Event dan Proposal Gagal Terupload");
+				window.location.replace("read_event.php") </script>'; 
 		}
 		
 	}else{
 		echo ' <script type="text/javascript">
-				alert("Profil Login Gagal Diubah");
-				window.location.replace("read_user_login.php") </script>'; 
+				alert("Event dan Proposal Gagal Terupload");
+				window.location.replace("read_event.php") </script>'; 
 		//echo "Profil Umum Gagal Diubah";
 	}
 	

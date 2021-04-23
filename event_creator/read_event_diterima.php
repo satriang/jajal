@@ -13,12 +13,10 @@ $halaman = @$_GET['halaman'];
 	}
 
 //sql event diterima
-$sql_event_didanai = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, sponsorship.nama_sponsorship, pengajuan_event.id_sponsorship, event_creator.nama_eo, pengajuan_event.dana_event, pengajuan_event.status
- FROM `pengajuan_event` 
+$sql_event_didanai = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, event_creator.nama_eo, pengajuan_event.dana_event, pengajuan_event.status, sponsorship.nama_sponsorship FROM `pengajuan_event` 
 JOIN event ON pengajuan_event.id_event = event.id_event 
-JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
-JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-WHERE event.id_event_creator = '{$id_event_creator}' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
+JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship 
+JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator WHERE event.id_event_creator = '$id_event_creator' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
 $eksekusi_event_didanai = mysqli_query($conn, $sql_event_didanai);
 ?>
   <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
@@ -62,14 +60,10 @@ $eksekusi_event_didanai = mysqli_query($conn, $sql_event_didanai);
           
               <?php
               // Langkah 3: Hitung total data dan halaman serta link 1,2,3 
-              $sql2_event_diterima = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, 
-                                              event.nama_event, event.id_event_creator, event_creator.nama_eo, 
-                                              pengajuan_event.dana_event, pengajuan_event.status
-                                              FROM `pengajuan_event`
-                                              JOIN event ON pengajuan_event.id_event = event.id_event
-                                              JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
-                                              JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-                                              WHERE event.id_event_creator = '{$id_event_creator}' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
+              $sql2_event_diterima = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event, event.nama_event, event.id_event_creator, event_creator.nama_eo, pengajuan_event.dana_event, pengajuan_event.status, sponsorship.nama_sponsorship FROM `pengajuan_event` 
+              JOIN event ON pengajuan_event.id_event = event.id_event 
+              JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship 
+              JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator WHERE event.id_event_creator = '$id_event_creator' AND pengajuan_event.status = 'DI TERIMA'";
               $eksekusi2_event_diterima = mysqli_query($conn, $sql2_event_diterima);
               $jmldata_event_diterima   = mysqli_num_rows($eksekusi2_event_diterima);
               $jmlhalaman_event_diterima = ceil($jmldata_event_diterima/$batas);
@@ -78,7 +72,7 @@ $eksekusi_event_didanai = mysqli_query($conn, $sql_event_didanai);
                      <?php
                         for($i=1;$i<=$jmlhalaman_event_diterima;$i++)
                           if ($i != $halaman){
-                            echo " <a href=\"read_event.php?halaman=$i\">$i</a> | ";
+                            echo " <a href=\"read_event_diterima.php?halaman=$i\">$i</a> | ";
                             }else{
                             echo " <b>$i</b> | ";
                           }

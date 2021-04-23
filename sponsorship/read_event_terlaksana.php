@@ -70,8 +70,7 @@ $eksekusi_event_terlaksana = mysqli_query($conn, $sql_event_terlaksana);
 																				JOIN event ON pengajuan_event.id_event = event.id_event
 																				JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
 																				JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-																				WHERE sponsorship.id_sponsorship = '{$id_sponsorship}' AND event.status_terlaksana = 'SUDAH TERLAKSANA' AND pengajuan_event.status = 'DI TERIMA'
-																				LIMIT $posisi,$batas";
+																				WHERE sponsorship.id_sponsorship = '{$id_sponsorship}' AND event.status_terlaksana = 'SUDAH TERLAKSANA' AND pengajuan_event.status = 'DI TERIMA'";
 							$eksekusi2_event_terlaksana = mysqli_query($conn, $sql2_event_terlaksana);
 							$jmldata_event_terlaksana   = mysqli_num_rows($eksekusi2_event_terlaksana);
 							$jmlhalaman_event_terlaksana = ceil($jmldata_event_terlaksana/$batas);
@@ -80,7 +79,7 @@ $eksekusi_event_terlaksana = mysqli_query($conn, $sql_event_terlaksana);
 										 <?php
 												for($i=1;$i<=$jmlhalaman_event_terlaksana;$i++)
 													if ($i != $halaman){
-														echo " <a href=\"read_event.php?halaman=$i\">$i</a> | ";
+														echo " <a href=\"read_event_terlaksana.php?halaman=$i\">$i</a> | ";
 														}else{
 														echo " <b>$i</b> | ";
 													}

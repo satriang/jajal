@@ -14,7 +14,7 @@ $halaman = @$_GET['halaman'];
 
 $id_event = $_GET['id_event'] ;
 
-$sql_id_pengajuan ="SELECT id_pengajuan_event FROM pengajuan_event WHERE id_event = '{$id_event}' AND id_sponsorship = '{$id_sponsorship}'";
+$sql_id_pengajuan ="SELECT id_pengajuan_event FROM pengajuan_event WHERE id_event = '{$id_event}'";
 $query_id_pengajuan = mysqli_query($conn, $sql_id_pengajuan);
 $row_id_pengajuan = mysqli_fetch_assoc($query_id_pengajuan);
 
@@ -218,34 +218,9 @@ $jumlah_data = $row_jumlah_foto['jumlah_foto_event'];
                     }
                   ?>
               </tbody>
-            </table>
-
-              <?php
-              // Langkah 3: Hitung total data dan halaman serta link 1,2,3
-              $sql2_event_diterima = "SELECT pengajuan_event.id_pengajuan_event, pengajuan_event.id_event,
-                                              event.nama_event, event.id_event_creator, event_creator.nama_eo,
-                                              pengajuan_event.dana_event, pengajuan_event.status
-                                              FROM `pengajuan_event`
-                                              JOIN event ON pengajuan_event.id_event = event.id_event
-                                              JOIN sponsorship ON pengajuan_event.id_sponsorship = sponsorship.id_sponsorship
-                                              JOIN event_creator ON event.id_event_creator = event_creator.id_event_creator
-                                              WHERE event.id_event = '{$id_event}' AND pengajuan_event.status = 'DI TERIMA' LIMIT $posisi,$batas";
-              $eksekusi2_event_diterima = mysqli_query($conn, $sql2_event_diterima);
-              $jmldata_event_diterima   = mysqli_num_rows($eksekusi2_event_diterima);
-              $jmlhalaman_event_diterima = ceil($jmldata_event_diterima/$batas);
-              ?>
-                  <br/> Halaman :
-                     <?php
-                        for($i=1;$i<=$jmlhalaman_event_diterima;$i++)
-                          if ($i != $halaman){
-                            echo " <a href=\"read_event.php?halaman=$i\">$i</a> | ";
-                            }else{
-                            echo " <b>$i</b> | ";
-                          }
-                        echo "<p>Total event : <b>$jmldata_event_diterima</b> Sponsor</p>";
-                      ?>
+            </table>             
           </div>
-           </div>
+        </div>
       </div>
      </div>
 
@@ -258,12 +233,9 @@ $jumlah_data = $row_jumlah_foto['jumlah_foto_event'];
   <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
     <div class="well">
      <p>Proposal</p><br/>
-     <p><a href="../event_creator/proposal/<?php echo $row['proposal'] ?>" class="btn btn-info"/>Baca Proposal</a></td></p>
+     <p><a href="../event_creator/proposal/<?php echo $row['proposal'] ?>" class="btn btn-info"/>Baca Proposal</a></p>
     </div>
-    <div class="well">
-     <p>Danai</p><br/>
-     <p><a href="form_danai_event.php?id_pengajuan_event=<?php echo $row_id_pengajuan['id_pengajuan_event'] ?>" class="w3-button w3-border w3-small w3-green"> Danai </a> </td></p>
-    </div>
+    
   </div>
 
 <script>

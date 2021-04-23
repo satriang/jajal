@@ -4,22 +4,7 @@
   </div>
 -->
 
-<div class="col-12 col-s-12">
-     <div class="jumbotron">
-                <div class="container text-center">
-                  <h1>Sponsorship Event</h1>      
-                  <p>Get Sponsors For Your Event</p>
-                </div>
-        </div>
-  </div>
-<div class="col-12 col-s-12">
-     <div class="jumbotron">
-                <div class="container text-center">
-                  <h1>Sponsorship Event</h1>      
-                  <p>Get Sponsors For Your Event</p>
-                </div>
-        </div>
-  </div>
+
 </div>
   
 </div>
