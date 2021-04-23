@@ -20,13 +20,12 @@ ON event_creator.id_user=user.id_user LIMIT $posisi,$batas";
 $eksekusi = mysqli_query($conn, $sql);
 //var_dump(array_values($eksekusi));
 ?>
-  <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
+  <div class="col-0 col-s-3 menu " style="text-align:center; font-weight: bold;">
     <ul>
-      <li><a href="form_tambah_event_creator.php">Tambah Event Creator</a></li>
-      <li><a href="form_tambah_event_creator.php">Cari</a></li>
     </ul>
   </div>
-  <div class="col-10 col-s-9">
+  <div class="col-12 col-s-9">
+    <h1 style="text-align: center;">Event Creator</h1>
   	<div style="overflow-x:auto;">
       <div class="table-responsive">  
         <table class="w3-table-all w3-hoverable">
@@ -62,10 +61,7 @@ $eksekusi = mysqli_query($conn, $sql);
               </td>
               <td>
                 <a href="hapus.php?id_event_creator=<?php echo $row['id_event_creator'] ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="w3-button w3-border w3-small w3-red"> Hapus </a>
-              </td>
-              <td>
-                <a href="hapus.php?id_kategori_event=<?php echo $row['id_kategori_event'] ?>"  class="w3-button w3-border w3-small w3-deep-purple"> Lihat Detail </a>
-              </td>         
+              </td>       
             </tr>
 
                        <?php

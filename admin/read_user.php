@@ -26,20 +26,6 @@ $eksekusi = mysqli_query($conn, $sql);
   </div>
  <div class="col-9 col-s-9">
       <div class="w3-container">
-        <h2>Tabs in a Grid</h2>
-          <div class="w3-row">
-            <a href="javascript:void(0)" onclick="openCity(event, 'London');" id="defaultOpen">
-              <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding" id="defaultOpen">London</div>
-            </a>
-            <a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
-              <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Paris</div>
-            </a>
-            <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
-              <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Tokyo</div>
-            </a>
-          </div>
-
-          <div id="London" class="w3-container city" style="display:none">
             <div class="table-responsive">  
               <table class="w3-table-all w3-large w3-hoverable">
                 <tbody>
@@ -84,24 +70,13 @@ $eksekusi = mysqli_query($conn, $sql);
               <?php
                 for($i=1;$i<=$jmlhalaman;$i++)
                   if ($i != $halaman){
-                    echo " <a href=\"read_user1.php?halaman=$i\">$i</a> | ";
+                    echo " <a href=\"read_user.php?halaman=$i\">$i</a> | ";
                     }
                   else{ 
                     echo " <b>$i</b> | "; 
                     }
                   echo "<p>Total User : <b>$jmldata</b> User</p>";
-              ?>
-          </div>
-
-          <div id="Paris" class="w3-container city" style="display:none">
-            <h2>Paris</h2>
-            <p>Paris is the capital of France.</p> 
-          </div>
-
-          <div id="Tokyo" class="w3-container city" style="display:none">
-            <h2>Tokyo</h2>
-            <p>Tokyo is the capital of Japan.</p>
-          </div>    
+              ?>   
     </div>
   </div>
 

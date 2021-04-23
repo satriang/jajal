@@ -21,13 +21,12 @@ JOIN kategori_event ON event.id_kategori_event = kategori_event.id_kategori_even
 $eksekusi = mysqli_query($conn, $sql);
 //var_dump(array_values($eksekusi));
 ?>
-  <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
+  <div class="col-0 col-s-3 menu " style="text-align:center; font-weight: bold;">
     <ul>
-      <li><a href="form_tambah_event_creator.php">Tambah Event</a></li>
-      <li><a href="form_tambah_event_creator.php">Cari</a></li>
     </ul>
   </div>
-  <div class="col-10 col-s-9">
+  <div class="col-12 col-s-9">
+  <h1 style="text-align: center;">Event</h1>
   	<div style="overflow-x:auto;">
       <div class="table-responsive">  
         <table class="w3-table-all w3-hoverable">
@@ -68,9 +67,6 @@ $eksekusi = mysqli_query($conn, $sql);
               <td><?php echo $row['status_terdanai'] ?></td>
               <td><?php echo $row['tanggal_berakhir'] ?></td>
               <td><?php echo $row['status_terlaksana'] ?></td>
-              <td>
-                <a href="form_edit_event.php?id_event=<?php echo $row['id_event'] ?>" class="w3-button w3-border w3-small w3-blue"> Edit </a> 
-              </td>
               <td>
                 <a href="hapus_event.php?id_event=<?php echo $row['id_event'] ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="w3-button w3-border w3-small w3-red"> Hapus </a>
               </td>  

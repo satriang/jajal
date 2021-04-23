@@ -1,7 +1,18 @@
 <?php
 
 include_once('layout_atas_form.php');
+include_once('koneksi.php');
+//get data id event
+$query_kategori_event = mysqli_query($conn, "SELECT max(id_kategori_event) as kodeMaksimal FROM kategori_event");
+$data_kategori_event = mysqli_fetch_array($query_kategori_event);
+$id_kategori_event = $data_kategori_event['kodeMaksimal'];
 
+$urutan_kategori_event = (int) substr($id_kategori_event, 3, 3);
+
+$urutan_kategori_event++;
+
+$huruf_kategori_event = "KTE";
+$id_kategori_event = $huruf_kategori_event . sprintf("%03s", $urutan_kategori_event);
 ?>
 <div class="col-12 col-s-9">
   	<div style="overflow-x:auto;">
@@ -10,7 +21,7 @@ include_once('layout_atas_form.php');
 				<form action="input_proses_tambah_kategori.php" method="post">
 					<tr>
 						<td style="font-weight: bold;">ID KATEGORI EVENT</td>
-						<td><input type="text" class="form-control" name="id_kategori_event" /> </td>
+						<td><input type="text" class="form-control" name="id_kategori_event" value="<?php echo $id_kategori_event; ?>" readonly/> </td>
 					</tr>
 					<tr>
 						<td style="font-weight: bold;">NAMA KATEGORI EVENT</td>

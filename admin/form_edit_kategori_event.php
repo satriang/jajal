@@ -25,7 +25,9 @@ $hasil = mysqli_fetch_assoc($ekseskusi_id);
 						<td><input type="text" class="form-control" value="<?php echo $hasil['kategori_event'] ?>" name="kategori_event" /> </td>
 					</tr>
 					<tr>
-						<td colspan="2" style="text-align: right; position: right;"><input type="reset" value="Batal"/><input type="submit" value="UBAH" /></td>
+						<td colspan="2" style="text-align: right; position: right;">
+						<a href="read_kategori_event.php"  class="w3-button w3-border w3-small w3-red"> Kembali </a>
+						<input type="submit" value="UBAH" class="w3-button w3-border w3-small w3-green"/></td>
 					</tr>
 						
 				 </form>

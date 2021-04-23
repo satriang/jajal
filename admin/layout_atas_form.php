@@ -174,11 +174,25 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="read_event_creator.php">Event Creator</a></li>
-        <li><a href="read_event.php">Event</a></li>
-        <li><a href="read_sponsorship.php">Sponsorship</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Event
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="read_event.php">Daftar Event</a></li>
+            <li><a href="read_event_creator.php">Event Creator</a></li>
+            <li><a href="read_kategori_event.php">Kategori Event</a></li>
+            <li><a href="read_kategori_peserta.php">Kategori Peserta Event</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sponsorship
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="read_sponsorship.php">Daftar Sponsorship</a></li>
+            <li><a href="read_kategori_sponsorship.php">Kategori Sponsorship</a></li>
+          </ul>
+        </li>
         <li><a href="read_user.php">User</a></li>
-        <li><a href="read_kategori_event.php">Kategori Event</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

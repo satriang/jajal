@@ -13,14 +13,14 @@ $halaman = @$_GET['halaman'];
 	  $posisi  = ($halaman-1) * $batas; 
 	}
 
-$sql = "SELECT * FROM `kategori_event` LIMIT $posisi,$batas" ;
+$sql = "SELECT * FROM `kategori_sponsorship` LIMIT $posisi,$batas" ;
 
 $eksekusi = mysqli_query($conn, $sql);
 
 ?>
   <div class="col-2 col-s-3 menu " style="text-align:center; font-weight: bold;">
     <ul>
-      <li><a href="form_tambah_kategori.php">Tambah Kategori Event</a></li>
+      <li><a href="form_tambah_kategori_sponsorship.php">Tambah Kategori Sponsorship</a></li>
     </ul>
   </div>
  <div class="col-9 col-s-9">
@@ -40,12 +40,12 @@ $eksekusi = mysqli_query($conn, $sql);
                       ?>
                        <tr>
                             <td><?php echo $no?></td>
-                            <td><?php echo $row['id_kategori_event'] ?></td>
-                            <td><?php echo $row['kategori_event'] ?></td>
+                            <td><?php echo $row['id_kategori_sponsorship'] ?></td>
+                            <td><?php echo $row['nama_kategori_sponsorship'] ?></td>
                             <td>
-                                <a href="form_edit_kategori_event.php?id_kategori_event=<?php echo $row['id_kategori_event'] ?>" class="w3-button w3-border w3-small w3-blue"> Edit </a>
-                                <a href="hapus_kategori_event.php?id_kategori_event=<?php echo $row['id_kategori_event'] ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="w3-button w3-border w3-small w3-red"> Hapus </a>
-                                <a href="detail_kategori_event.php?id_kategori_event=<?php echo $row['id_kategori_event'] ?>"  class="w3-button w3-border w3-small w3-deep-purple"> Lihat Detail </a>
+                                <a href="form_edit_kategori_sponsorship.php?id_kategori_sponsorship=<?php echo $row['id_kategori_sponsorship'] ?>" class="w3-button w3-border w3-small w3-blue"> Edit </a>
+                                <a href="hapus_kategori_sponsorship.php?id_kategori_sponsorship=<?php echo $row['id_kategori_sponsorship'] ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="w3-button w3-border w3-small w3-red"> Hapus </a>
+                                <a href="detail_kategori_sponsorship.php?id_kategori_sponsorship=<?php echo $row['id_kategori_sponsorship'] ?>"  class="w3-button w3-border w3-small w3-deep-purple"> Lihat Detail </a>
                             </td>
                             
                        </tr>
@@ -58,7 +58,7 @@ $eksekusi = mysqli_query($conn, $sql);
             </div>
             <?php
                             // Langkah 3: Hitung total data dan halaman serta link 1,2,3 
-                                $sql2 = "SELECT * FROM `kategori_event`";
+                                $sql2 = "SELECT * FROM `kategori_sponsorship`";
                                 $eksekusi2 = mysqli_query($conn, $sql2);
                                 $jmldata    = mysqli_num_rows($eksekusi2);
                                 $jmlhalaman = ceil($jmldata/$batas);
@@ -67,7 +67,7 @@ $eksekusi = mysqli_query($conn, $sql);
                             <?php
                                 for($i=1;$i<=$jmlhalaman;$i++)
                                 if ($i != $halaman){
-                                  echo " <a href=\"read_kategori_event.php?halaman=$i\">$i</a> | ";
+                                  echo " <a href=\"read_kategori_sponsorship.php?halaman=$i\">$i</a> | ";
                                 }
                                 else{ 
                                   echo " <b>$i</b> | "; 

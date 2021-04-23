@@ -15,7 +15,7 @@ $halaman = @$_GET['halaman'];
 
 $sql = "SELECT sponsorship.id_sponsorship, user.id_user, user.email, 
         sponsorship.nama_sponsorship, sponsorship.alamat, 
-        sponsorship.no_telp, sponsorship.dana_maksimal, sponsorship.deskripsi_sponsorship
+        sponsorship.no_telp, sponsorship.deskripsi_sponsorship
         FROM sponsorship LEFT JOIN user
         ON sponsorship.id_user = user.id_user LIMIT $posisi,$batas";
 
@@ -80,7 +80,7 @@ $eksekusi = mysqli_query($conn, $sql);
       <?php
         // Langkah 3: Hitung total data dan halaman serta link 1,2,3 
                                 $sql2 = "SELECT sponsorship.id_sponsorship, user.id_user, user.email, sponsorship.nama_sponsorship, sponsorship.alamat, 
-                                sponsorship.no_telp, sponsorship.dana_maksimal, sponsorship.deskripsi_sponsorship
+                                sponsorship.no_telp, sponsorship.deskripsi_sponsorship
                                 FROM sponsorship LEFT JOIN user
                                 ON sponsorship.id_user = user.id_user ";
                                 $eksekusi2 = mysqli_query($conn, $sql2);
