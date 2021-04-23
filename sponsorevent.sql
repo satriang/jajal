@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 21 Apr 2021 pada 03.17
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.3.11
+-- Host: localhost
+-- Generation Time: Apr 23, 2021 at 08:50 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -39,8 +39,8 @@ CREATE TABLE `event` (
   `lokasi_event` text NOT NULL,
   `deskripsi_event` text NOT NULL,
   `jumlah_peserta` int(11) NOT NULL,
-  `dana_anggaran` double NOT NULL DEFAULT 0,
-  `dana_terkumpul` double NOT NULL DEFAULT 0,
+  `dana_anggaran` double NOT NULL DEFAULT '0',
+  `dana_terkumpul` double NOT NULL DEFAULT '0',
   `tanggal_batas_pendanaan` date NOT NULL,
   `status_terdanai` varchar(40) NOT NULL,
   `feedback` text NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`id_event`, `id_event_creator`, `id_kategori_event`, `id_kategori_peserta`, `nama_event`, `tanggal`, `proposal`, `lokasi_event`, `deskripsi_event`, `jumlah_peserta`, `dana_anggaran`, `dana_terkumpul`, `tanggal_batas_pendanaan`, `status_terdanai`, `feedback`, `tanggal_terlaksana`, `status_terlaksana`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `event` (`id_event`, `id_event_creator`, `id_kategori_event`, `id_ka
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event_creator`
+-- Table structure for table `event_creator`
 --
 
 CREATE TABLE `event_creator` (
@@ -81,7 +81,7 @@ CREATE TABLE `event_creator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `event_creator`
+-- Dumping data for table `event_creator`
 --
 
 INSERT INTO `event_creator` (`id_event_creator`, `id_user`, `nama_eo`, `alamat`, `no_telp`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `event_creator` (`id_event_creator`, `id_user`, `nama_eo`, `alamat`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `foto_event`
+-- Table structure for table `foto_event`
 --
 
 CREATE TABLE `foto_event` (
@@ -106,7 +106,7 @@ CREATE TABLE `foto_event` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_event`
+-- Table structure for table `kategori_event`
 --
 
 CREATE TABLE `kategori_event` (
@@ -115,7 +115,7 @@ CREATE TABLE `kategori_event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_event`
+-- Dumping data for table `kategori_event`
 --
 
 INSERT INTO `kategori_event` (`id_kategori_event`, `kategori_event`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `kategori_event` (`id_kategori_event`, `kategori_event`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_peserta`
+-- Table structure for table `kategori_peserta`
 --
 
 CREATE TABLE `kategori_peserta` (
@@ -148,11 +148,11 @@ CREATE TABLE `kategori_peserta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_peserta`
+-- Dumping data for table `kategori_peserta`
 --
 
 INSERT INTO `kategori_peserta` (`id_kategori_peserta`, `kategori_peserta`, `deskripsi_kategori_peserta`) VALUES
-('IKT001', 'Dibawah 7 Tahun', 'Anak-Anak Usia Dibawah 7 Tahuh'),
+('IKT001', 'Dibawah 7 Tahun', 'Anak-Anak Usia Dibawah 7 Tahun'),
 ('IKT002', 'Diatas 7 Tahun Dibawah 13 Tahun', 'Usia Anak diatas 7 tahun sampai dibawah 13 tahun atau setingkat anak sekolah dasar'),
 ('IKT003', 'Usia diatas 13 tahun Dibawah 17 tahun', 'Usia remaja diatas usia 13 tahun dan dibawah 17 tahun atau setingkat anak sekolah menengah pertama'),
 ('IKT004', 'Diatas umur 16 tahun Dibawah umur 19 tahun', 'Usia remaja diatas umur 16 tahun dibawah 19 tahun atau setingkat sekolah menengah atas'),
@@ -163,7 +163,7 @@ INSERT INTO `kategori_peserta` (`id_kategori_peserta`, `kategori_peserta`, `desk
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_sponsorship`
+-- Table structure for table `kategori_sponsorship`
 --
 
 CREATE TABLE `kategori_sponsorship` (
@@ -173,11 +173,11 @@ CREATE TABLE `kategori_sponsorship` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_sponsorship`
+-- Dumping data for table `kategori_sponsorship`
 --
 
 INSERT INTO `kategori_sponsorship` (`id_kategori_sponsorship`, `nama_kategori_sponsorship`, `deskripsi_kategori_sponsorship`) VALUES
-('IKS001', 'Produk Kesehatan', 'Semua jenis usaha produk kesehatan dan produsen produk kesehatan'),
+('IKS001', 'Produk Kesehatan', 'Semua jenis usaha produk penjualan kesehatan dan produsen produk kesehatan'),
 ('IKS002', 'Produk Kecantikan', 'Semua jenus usaha di bidang kecantikan dan Produsen bidang kecantikan'),
 ('IKS003', 'Produk Sport Olahraga', 'Semua usaha di bidang produk olahraga atau produsen di bidang produk olahraga'),
 ('IKS004', 'Produk Elektronik dan IT', 'Semua usaha di bidang elektronik dan IT atau produsen di bidang elektronik dan IT'),
@@ -185,12 +185,13 @@ INSERT INTO `kategori_sponsorship` (`id_kategori_sponsorship`, `nama_kategori_sp
 ('IKS006', 'Produk Makanan dan Minuman', 'Semua usaha di bidang makanan dan minuman atau produsen makanan dan minuman'),
 ('IKS007', 'Produk Textile', 'Usaha di bidang textile seperti kaos, celana, kain dan barang pakaian '),
 ('IKS008', 'Produk Rokok', 'Produsen yang memproduksi rokok'),
-('IKS009', 'Jasa Percetakan', 'Usaha yang bergerak di bidang jasa percetakan undangan,banner, spanduk, tanggalan dan lain-lain');
+('IKS009', 'Jasa Percetakan', 'Usaha yang bergerak di bidang jasa percetakan undangan,banner, spanduk, tanggalan dan lain-lain'),
+('IKS010', 'Produk Bangunan', 'Usaha yang bergerak di bidang produksi atau penjualan material Bangunan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan_event`
+-- Table structure for table `pengajuan_event`
 --
 
 CREATE TABLE `pengajuan_event` (
@@ -202,7 +203,7 @@ CREATE TABLE `pengajuan_event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengajuan_event`
+-- Dumping data for table `pengajuan_event`
 --
 
 INSERT INTO `pengajuan_event` (`id_pengajuan_event`, `id_event`, `id_sponsorship`, `dana_event`, `status`) VALUES
@@ -280,7 +281,7 @@ INSERT INTO `pengajuan_event` (`id_pengajuan_event`, `id_event`, `id_sponsorship
 ('PJE072', 'EVT012', 'SPR010', 5000000, 'DI TERIMA');
 
 --
--- Trigger `pengajuan_event`
+-- Triggers `pengajuan_event`
 --
 DELIMITER $$
 CREATE TRIGGER `update_dana_terkumpul` AFTER UPDATE ON `pengajuan_event` FOR EACH ROW BEGIN
@@ -294,7 +295,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sponsorship`
+-- Table structure for table `sponsorship`
 --
 
 CREATE TABLE `sponsorship` (
@@ -309,7 +310,7 @@ CREATE TABLE `sponsorship` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sponsorship`
+-- Dumping data for table `sponsorship`
 --
 
 INSERT INTO `sponsorship` (`id_sponsorship`, `id_user`, `id_kategori_sponsorship`, `judul_sponsorship`, `nama_sponsorship`, `alamat`, `no_telp`, `deskripsi_sponsorship`) VALUES
@@ -327,7 +328,7 @@ INSERT INTO `sponsorship` (`id_sponsorship`, `id_user`, `id_kategori_sponsorship
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -338,7 +339,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `email`, `password`, `level`) VALUES
@@ -363,7 +364,7 @@ INSERT INTO `user` (`id_user`, `email`, `password`, `level`) VALUES
 --
 
 --
--- Indeks untuk tabel `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id_event`),
@@ -372,71 +373,71 @@ ALTER TABLE `event`
   ADD KEY `id_kategori_peserta` (`id_kategori_peserta`);
 
 --
--- Indeks untuk tabel `event_creator`
+-- Indexes for table `event_creator`
 --
 ALTER TABLE `event_creator`
   ADD PRIMARY KEY (`id_event_creator`),
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `foto_event`
+-- Indexes for table `foto_event`
 --
 ALTER TABLE `foto_event`
   ADD PRIMARY KEY (`id_foto_event`);
 
 --
--- Indeks untuk tabel `kategori_event`
+-- Indexes for table `kategori_event`
 --
 ALTER TABLE `kategori_event`
   ADD PRIMARY KEY (`id_kategori_event`);
 
 --
--- Indeks untuk tabel `kategori_peserta`
+-- Indexes for table `kategori_peserta`
 --
 ALTER TABLE `kategori_peserta`
   ADD PRIMARY KEY (`id_kategori_peserta`);
 
 --
--- Indeks untuk tabel `kategori_sponsorship`
+-- Indexes for table `kategori_sponsorship`
 --
 ALTER TABLE `kategori_sponsorship`
   ADD PRIMARY KEY (`id_kategori_sponsorship`);
 
 --
--- Indeks untuk tabel `pengajuan_event`
+-- Indexes for table `pengajuan_event`
 --
 ALTER TABLE `pengajuan_event`
   ADD PRIMARY KEY (`id_pengajuan_event`);
 
 --
--- Indeks untuk tabel `sponsorship`
+-- Indexes for table `sponsorship`
 --
 ALTER TABLE `sponsorship`
   ADD PRIMARY KEY (`id_sponsorship`),
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `foto_event`
+-- AUTO_INCREMENT for table `foto_event`
 --
 ALTER TABLE `foto_event`
   MODIFY `id_foto_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `sponsorship`
+-- Constraints for table `sponsorship`
 --
 ALTER TABLE `sponsorship`
   ADD CONSTRAINT `sponsorship_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
